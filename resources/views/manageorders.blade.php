@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <html>
 <section id="header" >
 <header id="header" class="fixed-top">
@@ -11,7 +12,8 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="/home">Home</a></li>
-          <li class="active"><a href="/manage">Manage</a></li>
+          <li class="active"><a href="/manage">Manage Wisata</a></li>
+          <li class="active"><a href="/manageorders">Manage Pemesanan</a></li>
           @guest
                             <li class="active">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -48,49 +50,50 @@
   </header>
   </section>
   <body>
-  <main>
-  <section>
-    <!-- Page Content -->
-	<div class="container">
-
-<div class="row">
-
-  <!-- Post Content Column -->
-  <div class="col-lg-8">
-
-	<!-- Title -->
-	<h1 class="mt-4">{{$place->title}}</h1>
-
-	<!-- Author -->
-	<p class="lead">
-	  by
-	  <a href="#">Start Bootstrap</a>
-	</p>
-
-	<hr>
-
-	<!-- Date/Time -->
-	<p>Posted on {{$place->created_at}}</p>
-	<p>Updated on {{$place->updated_at}}</p>
-	<hr>
-
-	<!-- Preview Image -->
-
-	<img class="img-fluid rounded" src="{{asset('storage/'.$place ?? ''->image)}}" alt="">
-
-	<hr>
-
-	<!-- Post Content -->
-	<p class="lead"></p>
-	<p >{{$place->description}}</p>
-  <hr>
-  <p>{{$place->price}}</p>
-	</div>
-	</div>
-	</div>
-  </section>
-  </main>
-  </body>
-  </html>
-
-@endsection
+    <main id="main">
+    <section>
+    <div class="container">
+    <div class="row">
+    <a href="/order"   class="btn btn-primary float-left" ><i class="fas fa-plus"></i>Tambah Data</a>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+    <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Ktp</th>
+      <th scope="col">Nama</th>
+       <th scope="col">Jenis</th>
+       <th scope="col">Tanggal Berkunjung</th>
+       <th scope="col">Jumlah Orang</th>
+       <th scope="col">Status Bayar</th>
+       <th scope="col">Tindakan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        @foreach($order as $o)
+      <th>{{$o->id}}</th>
+      <td>{{$o->ktp}}</td>
+      <td>{{$o->nama}}</td>
+      <td>{{$o->jenis}}</td>
+      <td>{{$o->tglbook}}</td>
+      <td>{{$o->jmlhorang}}</td>
+      <td>{{$o->statusbayar}}</td>
+      <td>
+      <a class="btn btn-primary" href="editorder/{{$o->id}}">Edit</a>
+   
+   <a class="btn btn-danger" href="hapus/{{$o->id}}">Delete</a> 
+            </td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+</div>
+    </section>
+    </main>
+    </body>
+  @endsection
