@@ -18,4 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/wisata', 'WisataController@index');
+Route::get('/manage', 'PlaceController@index');
+Route::get('/add', 'PlaceController@add');
+Route::post('/create', 'PlaceController@create');
+Route::get('/order', 'OrderController@order');
+Route::post('/add', 'OrderController@add');
+Route::get('/editorder/{id}', 'OrderController@editorder');
+Route::post('/updateorder/{id}', 'OrderController@updateorder');
+Route::get('/hapus/{id}', 'OrderController@hapus');
+Route::get('/manageorders', 'OrderController@manage');
+Route::get('/wisata/{id}', 'PlaceController@getById');
+Route::get('/edit/{id}', 'PlaceController@edit');
+Route::post('/update/{id}', 'PlaceController@update');
+Route::get('/destroy/{id}','PlaceController@destroy');
