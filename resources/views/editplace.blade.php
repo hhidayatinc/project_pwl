@@ -1,11 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.master2')
 @section('content')
-<html>
-<head>
-</head>
-<body>
+<br><br><br><br><br><br>
 <div class="container">
-<div class="jumbotron">
 <p class="h1 text-center"> Form Edit Jenis Wisata </p>
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -42,7 +38,5 @@ name="image" value="{{$place->image}}">
   <button type="submit" class="btn btn-primary" >Ubah Data</button>
 </form>
 </div>
-</div>
-<body>
-</html>
+
 @endsection

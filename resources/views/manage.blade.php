@@ -1,59 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.master2')
 @section('content')
-
-<html>
-<section id="header" >
-<header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo mr-auto"><a href="/">Wisata Bromo</a></h1>
-      
-
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="/home">Home</a></li>
-          <li class="active"><a href="/manage">Manage</a></li>
-          @guest
-                            <li class="active">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="active">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                          @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-        </ul>
-      </nav>
-
-    </div>
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet"> 
-  </header>
-  </section>
-  <body>
+<br><br><br><br>
     <main id="main">
     <section>
     <div class="container">
     <div class="row">
-    <a href="/add"   class="btn btn-primary float-left" ><i class="fas fa-plus"></i>Tambah Data</a>
+    <a href="/add"   class="btn btn-warning float-left" ><i class="fas fa-plus"></i>Tambah Data</a>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
@@ -65,7 +17,9 @@
       <th scope="col">No</th>
       <th scope="col">Nama Wisata</th>
       <th scope="col">Harga</th>
-       <th scope="col">Tindakan</th>
+      <th scope="col">Deskripsi</th>
+      <th scope="col">Image</th>
+      <th scope="col">Tindakan</th>
     </tr>
   </thead>
   <tbody>
@@ -75,6 +29,7 @@
       <td>{{$p->title}}</td>
       <td>{{$p->price}}</td>
       <td>{{$p->description}}</td>
+      <td>{{$p->image}}</td>
       <td>
                 
    
@@ -93,5 +48,4 @@
 </div>
     </section>
     </main>
-    </body>
   @endsection

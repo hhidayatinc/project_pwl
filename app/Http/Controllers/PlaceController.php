@@ -7,6 +7,10 @@ use App\Place;
 
 class PlaceController extends Controller
 {
+    public function getAll(){
+        $place  = Place::all();
+        return view('place', ['place' => $place]);
+    }
     public function index(){
         $place  = Place::all();
         return view('manage', ['place' => $place]);

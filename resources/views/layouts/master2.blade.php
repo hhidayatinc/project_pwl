@@ -64,7 +64,10 @@
 
       <nav class="nav-menu d-none d-lg-block">
       <ul>
-            <li class="active"><a href="/home">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
+            <li class="active"><a href="/place">Wisata</a></li>
+            <li class="active"><a href="/manage">Manage Wisata</a></li>
+            <li class="active"><a href="/manageorders">Manage Order</a></li>
                           @guest
                             <li class="active">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
