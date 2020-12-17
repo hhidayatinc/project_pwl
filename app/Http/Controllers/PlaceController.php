@@ -34,7 +34,7 @@ class PlaceController extends Controller
         $image_name = $request->file('image')->store('images', 'public');
         $place->image = $image_name;
         $place->save();
-        return redirect('/manage');
+        return redirect('/manage')->with('success', 'Jenis Wisata updated successfully');
     }
     public function add()
     {
@@ -51,36 +51,12 @@ class PlaceController extends Controller
         'price' =>$req->price,
         'image' => $gambar,
         ]);
-        return redirect()->route('manage')
-                        ->with('success', 'Jenis Wisata created successfully');
+        return redirect('/manage')->with('success', 'Jenis Wisata created successfully');
     }
     public function destroy($id)
     {
         $place = Place::find($id);
         $place->delete();
-        return redirect()->route('manage')
-        ->with('success', 'Jenis Wisata delete successfully');
+        return redirect('/manage') ->with('success', 'Jenis Wisata delete successfully');
     }
-
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'title' => 'required',
-    //         'description' => 'required',
-    //         'image' => 'required|max:7000'
-    //     ]);
-  
-    //     // Article::create($request->all());
-    //     $filename = time().'.'.$request->file('image')->getClientOriginalExtension();
-    //     $destinationPath = 'storage/uploads/';
-    //     $upload_success = $request->file('image')->move($destinationPath, $filename);
-    //     $add = new Place();
-    //     $add->title = $request->title;
-    //     $add->description = $request->description;
-    //     $add->image = $request->image;
-    //     $add->image = $destinationPath.$filename;
-    //     $add->save();
-    //    return redirect()->route('manage') 
-    //                     ->with('success','Place created successfully.');
-    // }
 }

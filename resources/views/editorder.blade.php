@@ -20,15 +20,15 @@
 <form action="/updateorder/{{$order->id}}" method="post" enctype="multipart/form-data">
  @csrf 
  <input type="hidden" name="id" ></br>
-<div class="form-group">
+ <div class="form-group">
  <label for="title">KTP</label>
  <input type="text" class="form-control" 
-required="required" name="ktp" value="{{$order->ktp}}" ></br>
+required="required" name="ktp" value="{{$order->ktp}}"></br>
  </div>
  <div class="form-group">
  <label for="title">Nama</label>
  <input type="text" class="form-control" 
-required="required" name="nama" value="{{$order->nama}}" ></br>
+required="required" name="nama" value="{{$order->nama}}"></br>
  </div>
  <div class="form-group">
  <label for="title">No Telpon</label>
@@ -36,7 +36,7 @@ required="required" name="nama" value="{{$order->nama}}" ></br>
 required="required" name="notelp" value="{{$order->notelp}}"></br>
  </div>
  <div class="form-group">
- <label for="title">alamat</label>
+ <label for="title">Alamat</label>
  <input type="text" class="form-control" 
 required="required" name="alamat" value="{{$order->alamat}}"></br>
  </div>
@@ -63,7 +63,7 @@ required="required" name="jmlhorang" value="{{$order->jmlhorang}}"></br>
  <div class="form-group">
  <label for="title">Status Bayar</label>
  <input type="text" class="form-control" 
-required="required" name="jmlhorang" value="{{$order->statusbayar}}"></br>
+required="required" name="statusbayar" value="{{$order->statusbayar}}"></br>
  </div>
   <button type="submit" class="btn btn-primary">Ubah Order</button>
 </form>

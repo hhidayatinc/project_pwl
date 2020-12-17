@@ -27,7 +27,7 @@ class OrderController extends Controller
             'jmlhorang' => $req->jmlhorang,
             'statusbayar' => $req->statusbayar,
             ]);
-            return redirect('/manageorders');
+            return redirect('/manageorders')->with('success', 'Order created successfully');
     }
     public function editorder($id)
     {
@@ -47,15 +47,13 @@ class OrderController extends Controller
         $order->jmlhorang = $request->jmlhorang;
         $order->statusbayar = $request->statusbayar;
         $order->save();
-        return redirect()->route('manageorders')
-                        ->with('success', 'Order updated succsessfully');
+        return redirect('/manageorders')->with('success', 'Order updated successfully');
     }
     public function hapus($id)
     {
         $order = Order::find($id);
         $order->delete();
-        return redirect()->route('manage')
-        ->with('success', 'Order delete successfully');
+        return redirect('/manageorders')->with('success', 'Order deleted successfully');
     }
 
     public function cetak($id)

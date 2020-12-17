@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/wisata', 'HomeController@wisata');
 Route::get('/manage', 'PlaceController@index');
 Route::get('/add', 'PlaceController@add');
 Route::post('/create', 'PlaceController@create');

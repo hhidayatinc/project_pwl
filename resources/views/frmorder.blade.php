@@ -35,7 +35,7 @@ required="required" name="nama"></br>
 required="required" name="notelp"></br>
  </div>
  <div class="form-group">
- <label for="title">alamat</label>
+ <label for="title">Alamat</label>
  <input type="text" class="form-control" 
 required="required" name="alamat"></br>
  </div>
