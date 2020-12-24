@@ -20,6 +20,12 @@ class PlaceController extends Controller
         $place = Place::find($id);
         return view('wisata', ['wisata' => $place]);
     }
+
+    public function getByDetail($id){
+        $place = Place::find($id);
+        return view('placedetail', ['place' => $place]);
+    }
+
     public function edit($id)
     {
         $place = Place::find($id);

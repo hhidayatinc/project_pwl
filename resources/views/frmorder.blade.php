@@ -1,10 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.master2')
 @section('content')
-<html>
-<head>
-</head>
-<body>
-<div class="container">
+<br><br><br><br><br>
+
+<div class="container" style="color:black;">
 <div class="jumbotron">
 <p class="h1 text-center"> Form Pemesanan </p>
     @if ($errors->any())
@@ -67,7 +65,5 @@ required="required" name="statusbayar"></br>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>
-</div>
-<body>
-</html>
+
 @endsection

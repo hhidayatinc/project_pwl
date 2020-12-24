@@ -103,7 +103,7 @@
   </header><!-- End Header -->
 
   <main class="py-4">
-            @yield('content');
+            @yield('content')
     </main>
 
     <footer id="footer">

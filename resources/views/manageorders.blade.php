@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.master2')
 @section('content')
-
-<html>
+<!-- 
 <section id="header" >
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
@@ -48,7 +47,8 @@
     </div>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet"> 
   </header>
-  </section>
+  </section> -->
+  <br><br><br><br><br>
   <body>
     <main id="main">
     <section>
