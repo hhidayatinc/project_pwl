@@ -46,8 +46,12 @@ required="required" name="email"></br>
  </div>
  <div class="form-group">
  <label for="title">Tempat Wisata</label>
- <input type="text" class="form-control" 
-required="required" name="jenis"></br>
+ <select class="form-control" id="id_place" name="id_place">
+  <option selected>Pilih Jenis Wisata</option>
+  @foreach($place as $p)
+  <option value="{{$p->id}}">{{$p->title}}</option>
+  @endforeach
+</select>
  </div>
  <div class="form-group">
  <label for="title">Tanggal Berkunjung</label>
@@ -60,10 +64,10 @@ required="required" name="tglbook"></br>
 required="required" name="jmlhorang"></br>
  </div>
  <div class="form-group">
- <label for="title">Status Bayar</label>
- <input type="text" class="form-control" 
-required="required" name="statusbayar"></br>
- </div>
+    <label for="image">Bukti Bayar</label>
+    <input type="file" class="form-control-file" required="required" 
+name="statusbayar">
+  </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>

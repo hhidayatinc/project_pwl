@@ -17,6 +17,6 @@ class Order extends Model
     'statusbayar'];
 
     public function place(){
-        return $this->belongsTo('App\Place');
+        return $this->hasMany('App\Place','jenis');
     }
 }

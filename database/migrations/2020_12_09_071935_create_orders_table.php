@@ -20,12 +20,15 @@ class CreateOrdersTable extends Migration
             $table->string('notelp')->nullable();
             $table->string('alamat')->nullable();
             $table->string('email')->nullable();
-            $table->string('jenis')->nullable();
+            $table->bigInteger('id_place')->unsigned();
             $table->date('tglbook')->nullable();
             $table->bigInteger('jmlhorang')->nullable();
             $table->double('total', 8,2)->nullable();
             $table->String('statusbayar')->nullable();
             $table->timestamps();
+        });
+        Schema::table('orders', function($table){
+            $table->foreign('id_place')->references('id')->on('places')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

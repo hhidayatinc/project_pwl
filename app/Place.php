@@ -8,7 +8,7 @@ class Place extends Model
 {
     protected $fillable = ['title','description','price','image'];
 
-    public function place(){
-        return $this->hasMany('App\order');
+    public function order(){
+        return $this->hasOne('App\order','jenis');
     }
 }
