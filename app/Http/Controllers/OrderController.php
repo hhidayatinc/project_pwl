@@ -16,6 +16,9 @@ class OrderController extends Controller
     }
 
     public function add(Request $req){
+        if($req->file('image')){
+            $gambar = $req->file('image')->store('images','public');
+            }
         Order::create([
             'ktp' => $req->ktp,
             'nama' => $req->nama,
@@ -25,7 +28,7 @@ class OrderController extends Controller
             'jenis' => $req->jenis,
             'tglbook' => $req->tglbook,
             'jmlhorang' => $req->jmlhorang,
-            'statusbayar' => $req->statusbayar,
+            'statusbayar' => $gambar,
             ]);
             return redirect('/manageorders')->with('success', 'Order created successfully');
     }
@@ -45,7 +48,12 @@ class OrderController extends Controller
         $order->jenis = $request->jenis;
         $order->tglbook = $request->tglbook;
         $order->jmlhorang = $request->jmlhorang;
-        $order->statusbayar = $request->statusbayar;
+        if($order->statusbayar && file_exists(storage_path('app/public/' . $order->statusbayar)))
+        {
+        \Storage::delete('public/'.$order->statusbayar);
+        }
+        $image_name = $request->file('image')->store('images', 'public');
+        $order->statusbayar = $image_name;
         $order->save();
         return redirect('/manageorders')->with('success', 'Order updated successfully');
     }
