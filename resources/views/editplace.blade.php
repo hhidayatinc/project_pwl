@@ -1,7 +1,8 @@
 @extends('layouts.master2')
 @section('content')
 <br><br><br><br><br><br>
-<div class="container">
+<div class="container" style="color:black;">
+<div class="jumbotron">
 <p class="h1 text-center"> Form Edit Jenis Wisata </p>
     @if ($errors->any())
     <div class="alert alert-danger">

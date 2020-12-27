@@ -29,11 +29,11 @@
       <td>{{$p->title}}</td>
       <td>{{$p->price}}</td>
       <td>{{$p->description}}</td>
-      <td>{{$p->image}}</td>
+      <td><img width="150px" src="{{asset('storage/'.$p->image)}}"></td>
       <td>
                 
    
-                    <a class="btn btn-info" href="wisata/{{$p->id}}">Show</a> 
+                    <a class="btn btn-info" href="detailplace/{{$p->id}}">Show</a> 
                     
                     <a class="btn btn-primary" href="edit/{{$p->id}}">Edit</a>
    
@@ -46,6 +46,5 @@
   </tbody>
 </table>
 </div>
-    </section>
-    </main>
+ 
   @endsection

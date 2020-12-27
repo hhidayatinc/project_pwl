@@ -24,7 +24,7 @@ class CreateOrdersTable extends Migration
             $table->date('tglbook')->nullable();
             $table->bigInteger('jmlhorang')->nullable();
             $table->double('total', 8,2)->nullable();
-            $table->String('statusbayar')->nullable();
+            $table->string('statusbayar')->nullable();
             $table->timestamps();
         });
         Schema::table('orders', function($table){

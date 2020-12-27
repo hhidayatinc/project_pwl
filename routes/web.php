@@ -16,18 +16,25 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/place', 'HomeController@getAll');
+Route::get('/detailplace/{id}', 'HomeController@getById');
+Route::get('/place/search', 'HomeController@search');
 
-Route::get('/place', 'PlaceController@getAll');
+//place
 Route::get('/manage', 'PlaceController@index');
 Route::get('/add', 'PlaceController@add');
 Route::post('/create', 'PlaceController@create');
+Route::get('/hapusadmin/{id}', 'PlaceController@hapus');
+Route::get('/manageorders', 'PlaceController@manage');
+Route::get('/edit/{id}', 'PlaceController@edit');
+Route::post('/update/{id}', 'PlaceController@update');
+Route::get('/destroy/{id}','PlaceController@destroy');
+
+//order
+Route::get('/historypemesanan', 'OrderController@historypemesanan');
+Route::get('/cetak/{id}', 'OrderController@cetak');
 Route::get('/order', 'OrderController@order');
 Route::post('/add', 'OrderController@add');
 Route::get('/editorder/{id}', 'OrderController@editorder');
 Route::post('/updateorder/{id}', 'OrderController@updateorder');
 Route::get('/hapus/{id}', 'OrderController@hapus');
-Route::get('/manageorders', 'OrderController@manage');
-Route::get('/wisata/{id}', 'PlaceController@getById');
-Route::get('/edit/{id}', 'PlaceController@edit');
-Route::post('/update/{id}', 'PlaceController@update');
-Route::get('/destroy/{id}','PlaceController@destroy');

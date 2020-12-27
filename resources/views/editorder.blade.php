@@ -1,10 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<html>
-<head>
-</head>
-<body>
-<div class="container">
+<br><br><br><br><br>
+<div class="container" style="color:black;">
 <div class="jumbotron">
 <p class="h1 text-center"> Form Edit Jenis Wisata </p>
     @if ($errors->any())
@@ -73,6 +70,5 @@ name="statusbayar" value="{{$order->statusbayar}}"></br>
 </form>
 </div>
 </div>
-<body>
-</html>
+
 @endsection

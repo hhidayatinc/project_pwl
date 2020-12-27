@@ -6,17 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    protected $table='orders';
     protected $fillable = ['ktp',
     'nama',
     'notelp',
     'alamat',
     'email',
-    'jenis',
+    'id_place',
     'tglbook',
     'jmlhorang',
-    'statusbayar'];
+    'statusbayar'
+];
 
     public function place(){
-        return $this->hasMany('App\Place','jenis');
+        return $this->hasMany('App\Order','id_place');
+    }
+
+    public function tempat(){
+        return $this->belongsTo('App\Place','id_place');
     }
 }
