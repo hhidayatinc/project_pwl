@@ -3,7 +3,6 @@
 <br><br><br><br><br>
     <div class="container" >
     <div class="row">
-    <a href="/order"   class="btn btn-primary float-left" ><i class="fas fa-plus"></i>Tambah Data</a>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
@@ -39,9 +38,8 @@
       <td>
            <a class="btn btn-warning" href="cetak/{{$o->id}}">Cetak</a>
            <br>
-           <a class="btn btn-success" href="buktibayar/{{$o->id}}">Upload</a>
-           <br>
            <a class="btn btn-primary" href="editorder/{{$o->id}}">Edit</a>
+           <br>
           <a class="btn btn-danger" href="hapus/{{$o->id}}">Delete</a> 
       </td>
     </tr>

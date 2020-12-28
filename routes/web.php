@@ -18,7 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/place', 'HomeController@getAll');
 Route::get('/detailplace/{id}', 'HomeController@getById');
-Route::get('/place/search', 'HomeController@search');
 
 //place
 Route::get('/manage', 'PlaceController@index');
@@ -38,5 +37,3 @@ Route::post('/add', 'OrderController@add');
 Route::get('/editorder/{id}', 'OrderController@editorder');
 Route::post('/updateorder/{id}', 'OrderController@updateorder');
 Route::get('/hapus/{id}', 'OrderController@hapus');
-Route::get('/buktibayar/{id}', 'OrderController@buktibayar');
-Route::post('/upload/{id}', 'OrderController@upload');

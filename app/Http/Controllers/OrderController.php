@@ -31,10 +31,6 @@ class OrderController extends Controller
     }
     
     public function add(Request $req){
-        // $totalbiaya=DB::table('orders')
-        //                 ->leftJoin('places', 'orders.id_place', '=', 'places=id')
-        //                 ->select('orders.*', '(places.price*orders.jmlhorang)','as','totalbiaya')
-        //                 ->get();
         $req->validate([
             'ktp' => 'required',
             'nama' => 'required',
@@ -61,7 +57,6 @@ class OrderController extends Controller
         $order->total = $totalbiaya;
         $order->save();
             return redirect('/historypemesanan')->with('success', 'Order created successfully');
-            
     }
 
     public function editorder($id)
@@ -96,6 +91,10 @@ class OrderController extends Controller
         $org = ($order->jmlhorang);
         $totalbiaya = $wisata * $org;
         $order->total = $totalbiaya;
+        if($request->file('statusbayar')){
+            $gambar = $request->file('statusbayar')->store('images','public');
+            $order->statusbayar = $gambar;
+            }
         $order->save();
         return redirect('/historypemesanan',['order'=>$order])->with('success', 'Order updated successfully');
     }
@@ -106,28 +105,11 @@ class OrderController extends Controller
         return redirect('/historypemesanan')->with('success', 'Order deleted successfully');
     }
 
-    public function cetak($id, Order $order, Place $place)
-    {
-       
+    public function cetak($id, Order $order)
+    {  
         $order = Order::find($id);
-    	$pdf = PDF::loadview('cetakpesanan',['order'=>$order, 'place'=>$place])->setPaper('a4', 'landscape');
+    	$pdf = PDF::loadview('cetakpesanan',['order'=>$order])->setPaper('a4', 'landscape');
     	return $pdf->stream();
-    }
-
-    public function buktibayar($id){
-        $order = Order::find($id);
-        return view('buktibayar',['order'=>$order]);
-    }
-   
-    public function upload($id, Request $req){
-        $req->validate(['statusbayar' => 'required']);
-        $order = Order::find($id);
-        if($req->file('statusbayar')){
-            $gambar = $req->file('statusbayar')->store('images','public');
-            $order->statusbayar = $gambar;
-            }
-            $order->save();
-            return redirect('/historypemesanan',['order'=>$order])->with('success', 'Upload successfully');
     }
 
 }

@@ -18,6 +18,7 @@ class Order extends Model
     'statusbayar'
 ];
 
+
     public function place(){
         return $this->hasMany('App\Order','id_place');
     }

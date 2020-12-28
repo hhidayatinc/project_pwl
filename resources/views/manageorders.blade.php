@@ -36,8 +36,9 @@
       <td>Rp {{$o->total}}</td>
       <td><img width="150px" src="{{asset('storage/'.$o->statusbayar)}}"></td>
       <td>
-   <a class="btn btn-danger" href="hapusadmin/{{$o->id}}">Delete</a> 
-            </td>
+          <a class="btn btn-danger" href="hapusadmin/{{$o->id}}">Delete</a> 
+      </td>
+
     </tr>
     @endforeach
   </tbody>

@@ -24,8 +24,6 @@ class PlaceController extends Controller
         return view('manage', ['place' => $place]);
     }
 
-
-   
     public function edit($id)
     {
         $place = Place::find($id);

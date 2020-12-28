@@ -36,12 +36,5 @@ class HomeController extends Controller
         $place = Place::find($id);
         return view('detailplace', ['place' => $place]);
     }
-    public function search(Request $request)
-	{
-		$search = $request->search;
-    	$place = DB::table('places')
-		->where('title','like',"%".$search."%");
-        return view('place',['place' => $place]);
-    }
     
 }
