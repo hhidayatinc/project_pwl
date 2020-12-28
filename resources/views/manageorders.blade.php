@@ -30,11 +30,11 @@
       <td>{{$o->ktp}}</td>
       <td>{{$o->nama}}</td>
       <td>{{$o->tempat->title}}</td>
-      <td>{{$o->tempat->price}}</td>
+      <td>Rp {{$o->tempat->price}}</td>
       <td>{{$o->tglbook}}</td>
       <td>{{$o->jmlhorang}}</td>
-      <td>{{$o->totalbiaya}}</td>
-      <td>{{$o->statusbayar}}</td>
+      <td>Rp {{$o->total}}</td>
+      <td><img width="150px" src="{{asset('storage/'.$o->statusbayar)}}"></td>
       <td>
    <a class="btn btn-danger" href="hapusadmin/{{$o->id}}">Delete</a> 
             </td>

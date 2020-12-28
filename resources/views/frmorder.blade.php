@@ -44,6 +44,7 @@
             <div class="form-group">
                 <label for="title">Tempat Wisata</label>
                 <select class="form-control" id="id_place" name="id_place">
+                        <option selected>Pilih Jenis Wisata</option>
                     @foreach($place  as $p)
                         <option value="{{$p->id}}">{{$p->title}}</option>
                     @endforeach
@@ -60,12 +61,12 @@
                 <input type="text" class="form-control" required="required" name="jmlhorang"></br>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="image">Bukti Bayar</label>
                 <input type="file" class="form-control-file" required="required" name="statusbayar">
-            </div>
+            </div> -->
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Buat Pesanan</button>
         </form>
     </div>
 </div>

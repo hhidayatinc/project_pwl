@@ -44,7 +44,6 @@ class OrderController extends Controller
             'id_place' => 'required',
             'tglbook' => 'required',
             'jmlhorang' => 'required',
-            'statusbayar' => 'required',
         ]);
         $place = Place::all();
         $order = new Order;
@@ -56,16 +55,13 @@ class OrderController extends Controller
         $order->id_place = $req->id_place;
         $order->tglbook = $req->tglbook;
         $order->jmlhorang = $req->jmlhorang;
-        if($req->file('image')){
-            $gambar = $req->file('image')->store('images','public');
-            $order->statusbayar = $gambar;
-            }
-        // if($req->file('image')){
-        //     $gambar = $req->file('image')->store('images','public');
-        //     $order->statusbayar = $gambar;
-        // }
+        $wisata = ($order->tempat->price);
+        $org = ($order->jmlhorang);
+        $totalbiaya = $wisata * $org;
+        $order->total = $totalbiaya;
         $order->save();
             return redirect('/historypemesanan')->with('success', 'Order created successfully');
+            
     }
 
     public function editorder($id)
@@ -87,7 +83,6 @@ class OrderController extends Controller
             'id_place' => 'required',
             'tglbook' => 'required',
             'jmlhorang' => 'required',
-            'statusbayar' => 'required',
         ]);
         $order->ktp = $request->ktp;
         $order->nama = $request->nama;
@@ -97,14 +92,12 @@ class OrderController extends Controller
         $order->id_place = $request->id_place;
         $order->tglbook = $request->tglbook;
         $order->jmlhorang = $request->jmlhorang;
-        if($order->statusbayar && file_exists(storage_path('app/public/' . $order->statusbayar)))
-        {
-        \Storage::delete('public/'.$order->statusbayar);
-        }
-        $image_name = $request->file('image')->store('images', 'public');
-        $order->statusbayar = $image_name;
+        $wisata = ($order->tempat->price);
+        $org = ($order->jmlhorang);
+        $totalbiaya = $wisata * $org;
+        $order->total = $totalbiaya;
         $order->save();
-        return redirect('/historypemesanan',['order'=>$order,'place' => $place])->with('success', 'Order updated successfully');
+        return redirect('/historypemesanan',['order'=>$order])->with('success', 'Order updated successfully');
     }
     public function hapus($id)
     {
@@ -113,14 +106,28 @@ class OrderController extends Controller
         return redirect('/historypemesanan')->with('success', 'Order deleted successfully');
     }
 
-    public function cetak($id)
+    public function cetak($id, Order $order, Place $place)
     {
        
         $order = Order::find($id);
-    	$pdf = PDF::loadview('cetakpesanan',['order'=>$order])->setPaper('a4', 'landscape');
+    	$pdf = PDF::loadview('cetakpesanan',['order'=>$order, 'place'=>$place])->setPaper('a4', 'landscape');
     	return $pdf->stream();
     }
 
+    public function buktibayar($id){
+        $order = Order::find($id);
+        return view('buktibayar',['order'=>$order]);
+    }
    
+    public function upload($id, Request $req){
+        $req->validate(['statusbayar' => 'required']);
+        $order = Order::find($id);
+        if($req->file('statusbayar')){
+            $gambar = $req->file('statusbayar')->store('images','public');
+            $order->statusbayar = $gambar;
+            }
+            $order->save();
+            return redirect('/historypemesanan',['order'=>$order])->with('success', 'Upload successfully');
+    }
 
 }

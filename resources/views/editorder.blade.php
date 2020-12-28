@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master2')
 @section('content')
 <br><br><br><br><br>
 <div class="container" style="color:black;">
@@ -61,12 +61,7 @@ required="required" name="tglbook" value="{{$order->tglbook}}"></br>
  <input type="text" class="form-control" 
 required="required" name="jmlhorang" value="{{$order->jmlhorang}}"></br>
  </div>
- <div class="form-group">
- <label for="title">Bukti Bayar</label>
- <input type="file" class="form-control-file" required="required" 
-name="statusbayar" value="{{$order->statusbayar}}"></br>
- </div>
-  <button type="submit" class="btn btn-primary">Ubah Order</button>
+  <button type="submit" class="btn btn-primary">Ubah Pesanan</button>
 </form>
 </div>
 </div>

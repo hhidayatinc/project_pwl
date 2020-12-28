@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master2')
 @section('content')
 <br><br><br><br><br>
 <div class="container" style="color:black;">
@@ -14,11 +14,11 @@
         </ul>
     </div>
 @endif
-<form action="/add" method="post" enctype="multipart/form-data">
+<form action="/upload/{{$order->id}}" method="post" enctype="multipart/form-data">
  @csrf 
  <div class="form-group">
-    <label for="image">Total Biaya </label>
-    <input type="file" class="form-control-file" value="{{$order->totalbiaya}}"
+    <label for="title">Total Biaya </label>
+    <input type="text" class="form-control-file" value="{{$order->total}}"
 name="totalbiaya">
   </div>
  <div class="form-group">

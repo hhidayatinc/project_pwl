@@ -38,3 +38,5 @@ Route::post('/add', 'OrderController@add');
 Route::get('/editorder/{id}', 'OrderController@editorder');
 Route::post('/updateorder/{id}', 'OrderController@updateorder');
 Route::get('/hapus/{id}', 'OrderController@hapus');
+Route::get('/buktibayar/{id}', 'OrderController@buktibayar');
+Route::post('/upload/{id}', 'OrderController@upload');

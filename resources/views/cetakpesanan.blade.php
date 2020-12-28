@@ -82,20 +82,19 @@
                     <th>Jumlah orang</th>
                     <th>Total</th>
                 </tr>
-                @foreach($order as $o)
+            
                 <tr>
-                    <td>{{$o->tempat->title}}</td>
-                    <td>{{$o->tempat->price}}</td>   
-                    <td>{{$o->tglbook}}</td>
-                    <td>{{$o->jmlhorang}}</td>
-                    <td>{{$o->totalbiaya}}</td>
+                    <td>{{$order->tempat->title}}</td>
+                    <td>{{$order->tempat->price}}</td>   
+                    <td>{{$order->jmlhorang}}</td>
+                    <td>Rp {{$order->total}}</td>
                 </tr>
-                @endforeach
+                
             </tbody>
             <tfoot>
                 <tr>
                     <th colspan="3">Total</th>
-                    <td>Rp {{ $order->totalbiaya }}</td>
+                    <td>Rp {{ $order->total }}</td>
                 </tr>
             </tfoot>
         </table>
