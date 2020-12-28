@@ -33,3 +33,6 @@ Route::get('/wisata/{id}', 'PlaceController@getByDetail');
 Route::get('/edit/{id}', 'PlaceController@edit');
 Route::post('/update/{id}', 'PlaceController@update');
 Route::get('/destroy/{id}','PlaceController@destroy');
+
+Route::get('/booking', 'BookingController@index');
+Route::get('/cetak/{id}', 'OrderController@cetak');

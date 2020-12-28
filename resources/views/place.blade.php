@@ -4,7 +4,7 @@
 @foreach($place as $p)
 <div class="row" style="margin-left:100px; margin-right:100px;">
       <div class="col-lg-6">
-        <img class="img-fluid rounded" src="{{ asset('storage/app/public/images'.$p->image) }}" alt="">
+        <img class="img-fluid rounded" src="{{ url('storage/app/public/images'.$p->image) }}" alt="">
       </div>      
       <div class="col-lg-6" style="text-align:left;">
         <h2>{{ $p->title }}</h2>

@@ -11,10 +11,8 @@ class Order extends Model
     'notelp',
     'alamat',
     'email',
-    'jenis',
     'tglbook',
-    'jmlhorang',
-    'statusbayar'];
+    'jmlhorang'];
 
     public function place(){
         return $this->hasMany('App\Place','jenis');

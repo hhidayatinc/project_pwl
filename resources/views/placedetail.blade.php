@@ -7,10 +7,10 @@
         <img class="img-fluid rounded" src="{{ url('storage/app/public/'.$place->image) }}" alt="">
         <h2>{{ $place->title }}</h2>
         <p>{{ $place->description }}</p>
-        <strong>Harga : {{ $p->price }}</strong>
+        <strong>Harga : {{ $place->price }}</strong>
         <br><br>
         <a href="/order"><button type="button" class="btn btn-outline-warning" style="border-radius: 20px; ">
-        More Detail</button></a>
+        Booking</button></a>
       </div>
 </div>
 

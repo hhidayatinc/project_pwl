@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use Illuminate\Http\Request;
 use PDF;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -25,10 +26,8 @@ class OrderController extends Controller
             'notelp' =>$req->notelp,
             'alamat' => $req->alamat,
             'email' => $req->email,
-            'jenis' => $req->jenis,
             'tglbook' => $req->tglbook,
             'jmlhorang' => $req->jmlhorang,
-            'statusbayar' => $gambar,
             ]);
             return redirect('/manageorders')->with('success', 'Order created successfully');
     }
@@ -64,8 +63,17 @@ class OrderController extends Controller
         return redirect('/manageorders')->with('success', 'Order deleted successfully');
     }
 
-    public function cetak($id)
+    public function cetak($id, Order $order)
     {
-        
+        $order = DB::table('orders')
+            ->join('places', 'places.id', '=', 'orders.id_place')
+            ->select('orders.*', 'places.title', 'places.price')
+            ->get();
+    //GET DATA BERDASARKAN ID
+    $order = Order::find($id);
+    //LOAD PDF YANG MERUJUK KE VIEW PRINT.BLADE.PHP DENGAN MENGIRIMKAN DATA DARI INVOICE
+    //KEMUDIAN MENGGUNAKAN PENGATURAN LANDSCAPE A4
+    $pdf = PDF::loadView('cetak', compact('order'))->setPaper('a4', 'landscape');
+    return $pdf->stream();
     }
 }
