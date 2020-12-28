@@ -66,8 +66,26 @@
       <ul>
             <li class="active"><a href="/">Home</a></li>
             <li class="active"><a href="/place">Wisata</a></li>
-            <li class="active"><a href="/manage">Manage Wisata</a></li>
-            <li class="active"><a href="/manageorders">Manage Order</a></li>
+            <li class="nav-item {{ Route::is('manage') ? 'active' : '' }}">
+              @can('manage-places')
+              <a class="nav-link" href="/manage">Manage Wisata</a>
+              @endcan
+            </li>
+            <li class="nav-item {{ Route::is('manageorders') ? 'active' : '' }}">
+              @can('manage-places')
+              <a class="nav-link" href="/manageorders">Manage Pemesanan</a>
+              @endcan
+            </li>
+            <li class="nav-item {{ Route::is('historypemesanan') ? 'active' : '' }}">
+              @can('user-display')
+              <a class="nav-link" href="/historypemesanan">History Pemesanan</a>
+              @endcan
+            </li>
+            <li class="nav-item {{ Route::is('order') ? 'active' : '' }}">
+              @can('user-display')
+              <a class="nav-link" href="/order">Form Pemesanan</a>
+              @endcan
+            </li>
                           @guest
                             <li class="active">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -84,7 +102,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="{{ route('logout') }}" style="color:black;"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -133,9 +151,9 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Jenis Wisata Kami</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="/welcome">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Jenis Wisata</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Order</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/place">Jenis Wisata</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/order">Order</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Logout</a></li>
             </ul>
           </div>

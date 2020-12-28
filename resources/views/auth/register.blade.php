@@ -125,6 +125,7 @@ body{
                             </div>
                         </div>
                     </form>
+                    <p>Have an account? <a href="{{ route('login') }}">{{ __('Login') }}</a><p>
                 </div>
             </div>
         </div>
