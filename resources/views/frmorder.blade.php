@@ -16,17 +16,24 @@
             @endif
         <form action="/add" method="post" enctype="multipart/form-data">
             @csrf 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="title">KTP</label>
                 <input type="text" class="form-control" required="required" name="ktp"></br>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label for="title">Nama</label>
-                <input type="text" class="form-control" required="required" name="nama"></br>
+                <select class="form-control" id="id_user" name="id_user">
+                        
+                    @foreach($user as $user)
+                        <option value="{{$user->id}}">{{$user->name}}</option>
+                    @endforeach
+                </select>
+                <!-- <input type="text" class="form-control" value="{{$user->id}}" id="id_user" name="id_user">{{$user->name}}</br> -->
+                
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="title">No Telpon</label>
                 <input type="text" class="form-control" required="required" name="notelp"></br>
             </div>
@@ -39,7 +46,7 @@
             <div class="form-group">
                 <label for="title">Email</label>
                 <input type="text" class="form-control" required="required" name="email"></br>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label for="title">Tempat Wisata</label>

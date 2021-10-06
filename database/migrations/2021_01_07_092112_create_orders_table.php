@@ -15,6 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('id_user')->unsigned();
             $table->string('ktp')->nullable();
             $table->string('nama')->nullable();
             $table->string('notelp')->nullable();
@@ -29,7 +30,9 @@ class CreateOrdersTable extends Migration
         });
         Schema::table('orders', function($table){
             $table->foreign('id_place')->references('id')->on('places')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
+
     }
 
     /**

@@ -27,8 +27,8 @@
     <tr>
         @foreach($order as $o)
         <td>{{$o->id}}</td>
-      <td>{{$o->ktp}}</td>
-      <td>{{$o->nama}}</td>
+      <td>{{$o->pengunjung->noktp}}</td>
+      <td>{{$o->pengunjung->name}}</td>
       <td>{{$o->tempat->title}}</td>
       <td>Rp {{$o->tempat->price}}</td>
       <td>{{$o->tglbook}}</td>
@@ -39,6 +39,8 @@
            <a class="btn btn-warning" href="cetak/{{$o->id}}">Cetak</a>
            <br>
            <a class="btn btn-primary" href="editorder/{{$o->id}}">Edit</a>
+           <br>
+           <a class="btn btn-success" href="bukti/{{$o->id}}">Upload</a>
            <br>
           <a class="btn btn-danger" href="hapus/{{$o->id}}">Delete</a> 
       </td>

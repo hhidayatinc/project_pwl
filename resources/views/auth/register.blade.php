@@ -1,7 +1,6 @@
-@extends('layouts.app')
-
+@extends('layouts.master2')
 @section('content')
-<section id="header" >
+<!-- <section id="header" >
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
@@ -54,16 +53,18 @@ body{
 </style> 
     <link href="{{ asset('css/style.css') }}" rel="stylesheet"> 
   </header>
-  </section>
-<body>
-<section id="login" class="login">
-<div class="container" style="margin-top:70px;">
-    <div class="row justify-content-center">
+  </section> -->
+  <br><br><br><br><br>
+<div class="container" style="color:black;">
+    <!-- <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header" style=" border-width:2px; border-style:solid; border-color: #F8CB10;">{{ __('Register') }}</div>
+            <div class="card"> -->
+            <div class="jumbotron">
+                    <p class="h1 text-center"> Register Account </p>
+                    <br><br>
+                <!-- <div class="card-header" style=" border-width:2px; border-style:solid; border-color: #F8CB10;">{{ __('Register') }}</div> -->
 
-                <div class="card-body" style=" border-width:2px; border-style:solid; border-color: #F8CB10;">
+                <!-- <div class="card-body" style=" border-width:2px; border-style:solid; border-color: #F8CB10;"> -->
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -96,6 +97,48 @@ body{
                         </div>
 
                         <div class="form-group row">
+                            <label for="noktp" class="col-md-4 col-form-label text-md-right">{{ __('No KTP') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="noktp" type="text" class="form-control @error('noktp') is-invalid @enderror" name="noktp" value ="{{ old('noktp') }}" required autocomplete="noktp" autofocus>
+
+                                @error('noktp')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="notelp" class="col-md-4 col-form-label text-md-right">{{ __('No Telpon') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="notelp" type="text" class="form-control @error('notelp') is-invalid @enderror" name="notelp" value ="{{ old('notelp') }}" required autocomplete="notelp" autofocus>
+
+                                @error('notelp')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="alamat" class="col-md-4 col-form-label text-md-right">{{ __('Alamat') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value ="{{ old('alamat') }}" required autocomplete="alamat" autofocus>
+
+                                @error('alamat')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -119,18 +162,27 @@ body{
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-outline-warning" style="border-radius: 5px; ">
+                                <button type="submit" class="btn btn-primary" style="border-radius: 5px; ">
                                     {{ __('Register') }}
                                 </button>
                             </div>
                         </div>
                     </form>
-                    <p>Have an account? <a href="{{ route('login') }}">{{ __('Login') }}</a><p>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <br>
+                    <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                            <p>Have an account? <a href="{{ route('login') }}">
+                                <button type="submit" class="btn btn-primary" style="border-radius: 5px; ">
+                                    {{ __('Login') }}
+                                </button>
+                                </a><p>
+                            </div>
+                        </div>
+                    <!-- <p>Have an account? <a href="{{ route('login') }}">{{ __('Login') }}</a><p> -->
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </div>
+    </div> -->
 </div>
-</section>
-</body>
+
 @endsection

@@ -9,16 +9,16 @@ use Illuminate\Support\Facades\Gate;
 
 class PlaceController extends Controller
 {
-    public function __construct()
-    //this method for authentication, not article
-{
-    //$this->middleware('auth');
-    $this->middleware(function($request, $next){
-        if(Gate::allows('manage-places')) return $next($request);
-        abort(403, 'Anda tidak memiliki cukup hak akses');
-        });
+//     public function __construct()
+//     //this method for authentication, not article
+// {
+//     //$this->middleware('auth');
+//     $this->middleware(function($request, $next){
+//         if(Gate::allows('manage-places')) return $next($request);
+//         abort(403, 'Anda tidak memiliki cukup hak akses');
+//         });
        
-}
+// }
     public function index(){
         $place  = Place::all();
         return view('manage', ['place' => $place]);
